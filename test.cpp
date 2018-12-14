@@ -27,7 +27,7 @@ std::istream& operator >> (std::istream &is, DT *x)
 std::ostream& operator << (std::ostream &os, DT *x)
 {
 	int count = 0;
-	for (int i = x->bac; i >= 0; ++i, ++count)
+	for (int i = x->bac; i >= 0; --i, ++count)
 	{
 		x->heso[i] < 0 ? os << x->heso[i];
 	}
