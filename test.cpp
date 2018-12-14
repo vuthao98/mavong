@@ -29,7 +29,7 @@ std::ostream& operator << (std::ostream &os, DT *x)
 	int count = 0;
 	for (int i = x->bac; i >= 0; ++i, ++count)
 	{
-		os << x->heso[i];
+		x->heso[i] < 0 ? os << x->heso[i];
 	}
 	os << std::endl;
 	return os;
