@@ -15,9 +15,9 @@ std::istream& operator >> (std::istream &is, DT *x)
 		if (x->bac < 1)
 			std::cout << "\nSo bac cua da thuc khong hop le.\n";
 	} while (x->bac < 1);
-	std::cout << "\nNhap cac he so (a0 -> an):\n";
+	std::cout << "\nNhap cac he so (an -> a0):\n";
 	x->heso = new double[x->bac + 1];
-	for (int i = 0; i <= x->bac; ++i)
+	for (int i = x->bac; i >= 0; --i)
 	{
 		std::cout << "\nHe so a" << i << ": ";
 		is >> x->heso[i];
@@ -27,11 +27,9 @@ std::istream& operator >> (std::istream &is, DT *x)
 std::ostream& operator << (std::ostream &os, DT *x)
 {
 	int count = 0;
-	os << x->heso[0];
-	x->heso[1] < 0 ? os << " - " << x->heso[1] * -1 << " * x" : os << " + " << x->heso[1] << " * x";
-	for (int i = 2; i <= x->bac; ++i, ++count)
+	for (int i = x->bac; i >= 0; ++i, ++count)
 	{
-		x->heso[i] < 0 ? os << " - " << x->heso[i] * -1 << " * x^" << i : os << " + " << x->heso[i] << " * x^" << i;
+		os << x->heso[i];
 	}
 	os << std::endl;
 	return os;
@@ -39,7 +37,7 @@ std::ostream& operator << (std::ostream &os, DT *x)
 DT* TimxR(DT *a)
 {
 	DT *xR = new DT;
-	xR->bac = a->bac -1;
+	xR->bac = a->bac;
 	xR->heso = new double [xR->bac+1];
 	for (int i =0; i<= xR->bac;++i)
 		{
